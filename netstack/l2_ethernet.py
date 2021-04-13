@@ -1,28 +1,15 @@
-def str_to_mac(mac: str):
-    if len(mc := mac.split(':')) != 6:
-        return None
-    m = bytearray(6)
-    for i in range(6):
-        m[i] = int(mc[i], 16)
-    return m
+from netstack.common import *
 
 
-def hex_to_str(mac: bytes):
-    macstr = ""
-    for i in range(len(mac)):
-        macstr += hex(mac[i])[2:] + ':'
-    return macstr[:-1]
-
-
-def type_to_str(type : int):
-    if type == 0x0800:
-        return str(type) + "IPv4"
-    elif type == 0x0806:
-        return str(type) + "ARP"
-    elif type == 0x0842:
-        return str(type) + "Wake-on-LAN"
-    elif type == 0x86DD:
-        return str(type) + "IPv6"
+def type_to_str(ether_type: int):
+    if ether_type == 0x0800:
+        return "IPv4"
+    elif ether_type == 0x0806:
+        return "ARP"
+    elif ether_type == 0x0842:
+        return "Wake-on-LAN"
+    elif ether_type == 0x86DD:
+        return "IPv6"
     else:
         return "Unknown"
 
