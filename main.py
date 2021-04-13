@@ -1,8 +1,12 @@
-import time
-from netstack.l0_interface import VirtualInterface as vi
-from netstack.device import NetDevice
+from netstack.l1_interface import Interface
+from netstack.l2_ethernet import frame_ethernet
 
-inter = vi("eth99")
-inter.initialize("192.168.1.1/24")
-dev = NetDevice("Host1")
-time.sleep(1)
+i = Interface(interface_name='dum0')
+
+while True:
+	f = i.receive()
+	fe = frame_ethernet()
+	fe.get(f)
+	fe.print_header()
+
+

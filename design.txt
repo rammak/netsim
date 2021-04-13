@@ -1,0 +1,6 @@
+device.py
+- Can create devices such as hosts, repeaters, routers etc.
+- Enums - device type(host, l0, l1, l2, l3 etc.)
+-- Host device should have a name, 0 or more interfaces, type of interfaces
+
+
